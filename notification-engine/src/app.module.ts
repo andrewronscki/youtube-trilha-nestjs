@@ -1,14 +1,13 @@
+import { SendGridModule } from '@anchan828/nest-sendgrid';
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
-import { NotificationModule } from './notification/notification.module';
 
 @Module({
-  imports: [
-    UsersModule,
-    NotificationModule,
-  ],
+  imports: [ConfigModule.forRoot(), SendGridModule.forRoot({
+    apikey: process.env.SEND_GRID_ACCESS_KEY,
+  })],
   controllers: [AppController],
   providers: [AppService],
 })

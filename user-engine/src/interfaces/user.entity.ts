@@ -1,7 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class UserEntity {
+export class UserEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -16,4 +16,7 @@ export class UserEntity {
 
   @Column()
   password: string;
+
+  @Column({ default: 'ACTIVATE' })
+  status: 'ACTIVATE' | 'INACTIVATE';
 }

@@ -4,4 +4,5 @@ export interface User {
   email: string;
   phone: string;
   password: string;
+  status?: 'ACTIVATE' | 'INACTIVATE';
 }
